@@ -1,4 +1,4 @@
-package com.example.demo.Repositories;
+package com.example.demo.model;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
