@@ -1,6 +1,5 @@
 package com.example.demo.model;
 
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,20 +12,20 @@ public class Customer {
     @Column(name = "CUSTOMER_ID")
     private int id;
 
-    @Column(name = "FIRST_NAME")
+    @Column(name = "FIRST_NAME", length = 20)
     public String firstName;
-    @Column(name = "LAST_NAME")
+    @Column(name = "LAST_NAME", length = 20)
     public String lastName;
 
-    @ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "SHOP_ID")
     private Shop shop;
 
-    @OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne( cascade = CascadeType.ALL)
     @JoinColumn( name = "ADDRESS_ID")
     private Address address;
 
-    @OneToMany( mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany( mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Order> orderList = new ArrayList<Order>();
 
     public Customer() {
@@ -85,8 +84,16 @@ public class Customer {
         this.shop = shop;
     }
 
-    public boolean addOrder (Order order)
-    {
-        return orderList.add(order);
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", shop=" + shop +
+                ", address=" + address +
+                ", orderList=" + orderList +
+                '}';
     }
 }

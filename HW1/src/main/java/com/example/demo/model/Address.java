@@ -6,17 +6,14 @@ import javax.persistence.*;
 @Table(name = "T_ADDRESS")
 public class Address {
 
-    /*
-        Hocaya sor
-     */
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO )
     @Column(name = "ADDRESS_ID")
     private int id;
 
-    @Column(name = "TEXT")
+    @Column(name = "TEXT", length = 30)
     public String text;
-    @Column(name = "CITY")
+    @Column(name = "CITY", length = 30)
     public String city;
 
     public Address() {
@@ -49,5 +46,14 @@ public class Address {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                ", city='" + city + '\'' +
+                '}';
     }
 }

@@ -6,13 +6,13 @@ import java.util.List;
 
 /*
     CHECK DONE \/
- */
+*/
 
 @Entity
 @Table(name = "T_PRODUCT")
 public class Product {
 
-    @Column( name = "NAME")
+    @Column( name = "NAME", length = 30)
     public String name;
 
     @Column( name = "PRICE")
@@ -27,11 +27,10 @@ public class Product {
     @JoinColumn(name = "SHOP_ID")
     private Shop shop;
 
-    @ManyToMany(mappedBy = "productList")
+    @ManyToMany(mappedBy = "productList", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Order> orderList = new ArrayList<Order>();
 
-    public Product() {
-    }
+    public Product() {}
 
     public Product(String name, double price) {
         this.name = name;
@@ -78,10 +77,15 @@ public class Product {
         this.price = price;
     }
 
-    public boolean addOrder(Order order)
-    {
-        return orderList.add(order);
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", id=" + id +
+                ", shop=" + shop +
+                ", orderList=" + orderList +
+                '}';
     }
-
-
 }

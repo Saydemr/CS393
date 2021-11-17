@@ -1,46 +1,30 @@
-package com.example.demo.model;
+package com.example.demo.service;
 
-import com.example.demo.Repositories.AddressRepository;
+import com.example.demo.Repositories.*;
 import com.example.demo.model.Address;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class AddressRepositoryTest {
 
+    @Autowired
+    AddressRepository addressRepository;
 
-    @Test
-    void createAddress()
-    {
-        Address address = new Address("Dormitory", "Cekmekoy");
-        assertTrue(address.getId() > 0);
+    @Autowired
+    CustomerRepository customerRepository;
 
-    }
+    @Autowired
+    ProductRepository productRepository;
 
-    @Test
-    void changeTextandCity()
-    {
-        Address address = new Address("Dormitory", "Cekmekoy");
-        assertTrue(address.getId() > 0);
+    @Autowired
+    OrderRepository orderRepository;
 
-        address.setText("House");
-        assertEquals(address.getText(),"House");
-        assertEquals(address.getText(),"Cekmekoy");
-
-        address.setCity("Uskudar");
-        assertEquals(address.getText(),"House");
-        assertEquals(address.getText(),"Uskudar");
-
-
-    }
-
+    @Autowired
+    ShopRepository shopRepository;
 
 
 

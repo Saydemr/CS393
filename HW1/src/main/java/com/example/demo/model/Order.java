@@ -13,7 +13,7 @@ public class Order {
     @Column(name = "ORDER_ID")
     private int id;
 
-    @ManyToMany ( cascade = CascadeType.ALL)
+    @ManyToMany ( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable
     (
         name = "T_ORDER_PRODUCT",
@@ -25,7 +25,7 @@ public class Order {
     )
     private List<Product> productList = new ArrayList<Product>();
 
-    @ManyToOne (cascade = CascadeType.ALL)
+    @ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn( name = "CUSTOMER_ID")
     private Customer customer;
 
@@ -83,8 +83,14 @@ public class Order {
         this.amount = amount;
     }
 
-    public boolean addProduct(Product product)
-    {
-        return productList.add(product);
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", productList=" + productList +
+                ", customer=" + customer +
+                ", date=" + date +
+                ", amount=" + amount +
+                '}';
     }
 }

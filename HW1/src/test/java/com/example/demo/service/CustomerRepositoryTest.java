@@ -1,8 +1,6 @@
-package com.example.demo.model;
+package com.example.demo.service;
 
-import com.example.demo.Repositories.AddressRepository;
-import com.example.demo.Repositories.CustomerRepository;
-import com.example.demo.Repositories.ShopRepository;
+import com.example.demo.Repositories.*;
 import com.example.demo.model.Address;
 import com.example.demo.model.Customer;
 import com.example.demo.model.Shop;
@@ -14,25 +12,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 class CustomerRepositoryTest {
 
     @Autowired
-    CustomerRepository customerRepository;
-    @Autowired
     AddressRepository addressRepository;
+
+    @Autowired
+    CustomerRepository customerRepository;
+
+    @Autowired
+    ProductRepository productRepository;
+
+    @Autowired
+    OrderRepository orderRepository;
+
     @Autowired
     ShopRepository shopRepository;
-
-    @Test
-    void Test_Insert()
-    {
-        Shop shop = new Shop("OzU Store", "Student Center");
-        Address address = new Address("OzU Dorm 1", "Istanbul");
-        Customer customer = new Customer("Hasan","Sozer");
-
-        customer.setAddress(address);
-        customer.setShop(shop);
-
-
-
-        customerRepository.save(customer);
-    }
 
 }

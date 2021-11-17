@@ -2,7 +2,8 @@ package com.example.demo.model;
 
 /*
  CHECK DONE \/
- */
+*/
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,19 +17,18 @@ public class Shop {
     @Column(name = "SHOP_ID")
     private int id;
 
-    @OneToMany( mappedBy = "shop", cascade = CascadeType.ALL)
+    @OneToMany( mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Customer> customerList = new ArrayList<Customer>();
 
-    @OneToMany( mappedBy = "shop", cascade = CascadeType.ALL)
+    @OneToMany( mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Product> productList = new ArrayList<Product>();
 
-    @Column(name = "SHOP_NAME")
+    @Column(name = "SHOP_NAME", length = 100)
     public String name;
-    @Column(name = "SHOP_ADDRESS")
+    @Column(name = "SHOP_ADDRESS", length = 200)
     public String address;
 
-    public Shop() {
-    }
+    public Shop() {}
 
     public Shop(String name, String address) {
         this.name = name;
@@ -75,4 +75,14 @@ public class Shop {
         this.address = address;
     }
 
+    @Override
+    public String toString() {
+        return "Shop{" +
+                "id=" + id +
+                ", customerList=" + customerList +
+                ", productList=" + productList +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }

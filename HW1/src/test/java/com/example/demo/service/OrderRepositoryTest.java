@@ -1,17 +1,26 @@
-package com.example.demo.model;
+package com.example.demo.service;
 
+import com.example.demo.Repositories.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+@SpringBootTest
 class OrderRepositoryTest {
 
-    @BeforeEach
-    void setUp() {
-    }
+    @Autowired
+    AddressRepository addressRepository;
 
-    @AfterEach
-    void tearDown() {
-    }
+    @Autowired
+    CustomerRepository customerRepository;
+
+    @Autowired
+    ProductRepository productRepository;
+
+    @Autowired
+    OrderRepository orderRepository;
+
+    @Autowired
+    ShopRepository shopRepository;
 }
