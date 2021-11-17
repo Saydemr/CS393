@@ -20,7 +20,7 @@ public class Shop {
     @OneToMany( mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Customer> customerList = new ArrayList<Customer>();
 
-    @OneToMany( mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany( mappedBy = "shop", cascade = CascadeType.ALL)
     private List<Product> productList = new ArrayList<Product>();
 
     @Column(name = "SHOP_NAME", length = 100)
@@ -79,8 +79,6 @@ public class Shop {
     public String toString() {
         return "Shop{" +
                 "id=" + id +
-                ", customerList=" + customerList +
-                ", productList=" + productList +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 '}';

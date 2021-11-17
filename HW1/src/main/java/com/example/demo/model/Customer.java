@@ -17,7 +17,7 @@ public class Customer {
     @Column(name = "LAST_NAME", length = 20)
     public String lastName;
 
-    @ManyToOne( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne( cascade = CascadeType.ALL)
     @JoinColumn(name = "SHOP_ID")
     private Shop shop;
 
@@ -25,7 +25,7 @@ public class Customer {
     @JoinColumn( name = "ADDRESS_ID", nullable = false)
     private Address address;
 
-    @OneToMany( mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany( mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Order> orderList = new ArrayList<Order>();
 
     public Customer() {
@@ -93,7 +93,6 @@ public class Customer {
                 ", lastName='" + lastName + '\'' +
                 ", shop=" + shop +
                 ", address=" + address +
-                ", orderList=" + orderList +
                 '}';
     }
 }

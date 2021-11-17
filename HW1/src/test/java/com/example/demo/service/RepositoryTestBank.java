@@ -33,7 +33,7 @@ class RepositoryTestBank {
     void allTests() throws InterruptedException {
 
 
-        System.out.println("In the application properties, I defined the database to be created each time." +
+        System.out.println("In the application properties, I defined the database to be created each time. " +
                 "That's why all the tests are inside one test method. I don't want to create each" +
                 " object from scratch since some attributes cannot be null.");
 

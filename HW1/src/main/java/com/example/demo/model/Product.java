@@ -27,7 +27,7 @@ public class Product {
     @JoinColumn(name = "SHOP_ID", nullable = false)
     private Shop shop;
 
-    @ManyToMany(mappedBy = "productList", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "productList", cascade = CascadeType.ALL)
     private List<Order> orderList = new ArrayList<Order>();
 
     public Product() {}
@@ -85,7 +85,6 @@ public class Product {
                 ", price=" + price +
                 ", id=" + id +
                 ", shop=" + shop +
-                ", orderList=" + orderList +
                 '}';
     }
 }
