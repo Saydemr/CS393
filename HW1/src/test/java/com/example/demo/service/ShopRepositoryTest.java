@@ -55,23 +55,6 @@ class ShopRepositoryTest {
         customer3.setAddress(address3);
         customer4.setAddress(address4);
 
-        /*
-        addressRepository.save(address1);
-        addressRepository.save(address2);
-        addressRepository.save(address3);
-        addressRepository.save(address4);
-*/
-        /*
-
-        product1.setShop(shop1);
-        product2.setShop(shop1);
-        product3.setShop(shop1);
-        product4.setShop(shop1);
-        product5.setShop(shop1);
-        */
-
-
-
         shop1.getCustomerList().add(customer1);
         customer1.setShop(shop1);
         shop1.getCustomerList().add(customer2);
@@ -82,15 +65,16 @@ class ShopRepositoryTest {
         shop2.getCustomerList().add(customer4);
         customer4.setShop(shop2);
 
-
         order1.getProductList().add(product1);
         product1.getOrderList().add(order1);
+
         order1.getProductList().add(product3);
         product3.getOrderList().add(order1);
+
         order1.getProductList().add(product5);
         product5.getOrderList().add(order1);
-        order1.setCustomer(customer1);
 
+        order1.setCustomer(customer1);
 
         order2.getProductList().add(product1);
         product1.getOrderList().add(order2);
@@ -100,7 +84,6 @@ class ShopRepositoryTest {
         product3.getOrderList().add(order2);
         order2.setCustomer(customer2);
 
-
         order3.getProductList().add(product3);
         product3.getOrderList().add(order3);
         order3.getProductList().add(product4);
@@ -109,13 +92,16 @@ class ShopRepositoryTest {
         product5.getOrderList().add(order3);
         order3.setCustomer(customer2);
 
-        orderRepository.save(order1);
-        orderRepository.save(order2);
-        orderRepository.save(order3);
+        shop1.getProductList().add(product1);
+        shop1.getProductList().add(product2);
+        shop2.getProductList().add(product3);
 
-        customerRepository.saveAll(shop1.getCustomerList());
-        customerRepository.saveAll(shop2.getCustomerList());
+        product1.setShop(shop1);
+        product2.setShop(shop1);
+        product3.setShop(shop2);
 
+        shopRepository.save(shop1);
+        shopRepository.save(shop2);
     }
 
     @Test

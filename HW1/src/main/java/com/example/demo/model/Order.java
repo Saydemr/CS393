@@ -29,13 +29,14 @@ public class Order {
     @JoinColumn( name = "CUSTOMER_ID")
     private Customer customer;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP )
     @Column(name = "DATE")
     public Date date;
     @Column(name = "AMOUNT")
     public double amount;
 
     public Order() {
+        this.date = new Date();
     }
 
     public Order(Date date, double amount) {
