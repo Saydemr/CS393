@@ -22,7 +22,7 @@ public class Customer {
     private Shop shop;
 
     @OneToOne( cascade = CascadeType.ALL)
-    @JoinColumn( name = "ADDRESS_ID")
+    @JoinColumn( name = "ADDRESS_ID", nullable = false)
     private Address address;
 
     @OneToMany( mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

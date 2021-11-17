@@ -26,7 +26,7 @@ public class Order {
     private List<Product> productList = new ArrayList<Product>();
 
     @ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn( name = "CUSTOMER_ID")
+    @JoinColumn( name = "CUSTOMER_ID", nullable = false)
     private Customer customer;
 
     @Temporal(TemporalType.TIMESTAMP )

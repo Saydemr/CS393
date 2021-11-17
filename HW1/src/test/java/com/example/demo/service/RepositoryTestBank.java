@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.Repositories.*;
 import com.example.demo.model.*;
+import org.aspectj.lang.annotation.DeclareWarning;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,9 +26,17 @@ class RepositoryTestBank {
     @Autowired
     ShopRepository shopRepository;
 
+
+
+
     @Test
-    void createAll()
-    {
+    void allTests() throws InterruptedException {
+
+
+        System.out.println("In the application properties, I defined the database to be created each time." +
+                "That's why all the tests are inside one test method. I don't want to create each" +
+                " object from scratch since some attributes cannot be null.");
+
         Shop shop1 = new Shop("7/24", "Dormitory 2");
         Shop shop2 = new Shop("Harvest", "AB1");
 
@@ -119,20 +128,13 @@ class RepositoryTestBank {
         assertEquals(4, customerRepository.findAll().size());
         assertEquals(3, orderRepository.findAll().size());
         assertEquals(4, addressRepository.findAll().size());
-    }
 
-    @Test
-    void Test_Shop()
-    {
+        // TESTS RELATED TO SHOP CLASS
+
         List<Shop> shopList = shopRepository.findAll();
         assertNotNull(shopList, "Shop table returns null.");
-        assertEquals(0, shopList.size());
 
-        Shop shop1 = new Shop("7/24", "Dormitory 2");
-        shopRepository.save(shop1);
-
-        shopList = shopRepository.findAll();
-        assertEquals(1, shopList.size());
+        assertEquals(2, shopList.size());
         Shop shopRetrieved = shopRepository.findByName("7/24").get(0);
         assertEquals(shopRetrieved.toString(), shop1.toString());
 
@@ -140,20 +142,10 @@ class RepositoryTestBank {
         for (Shop shop : shopList)
             System.out.println(shop.toString());
 
-    }
 
-    @Test
-    void Test_Product()
-    {
         List<Product> productList = productRepository.findAll();
         assertNotNull(productList, "Product table returns null.");
-        assertEquals(0, productList.size());
 
-        Product product1 = new Product("Caffe Latte", 14.0);
-        productRepository.save(product1);
-
-        productList = productRepository.findAll();
-        assertEquals(1, productList.size());
         Product productRetrieved = productRepository.findByNameAndPrice("Caffe Latte",14.0).get(0);
         assertEquals(productRetrieved.toString(), product1.toString());
 
@@ -161,26 +153,12 @@ class RepositoryTestBank {
         for (Product product : productList)
             System.out.println(product.toString());
 
-    }
 
-    @Test
-    void Test_Customer()
-    {
+
+        // TESTS RELATED TO CUSTOMER CLASS
+
         List<Customer> customerList = customerRepository.findAll();
         assertNotNull(customerList, "Product table returns null.");
-        assertEquals(0, customerList.size());
-
-        Customer customer1 = new Customer("Hasan", "Sozer");
-        Customer customer2 = new Customer("Esma", "Meral");
-
-        customerRepository.save(customer1);
-        customerRepository.save(customer2);
-
-        customerList = customerRepository.findAll();
-        assertEquals(2, customerList.size());
-
-        Customer customer3 = new Customer("Hasan", "Ugurdag");
-        customerRepository.save(customer3);
 
         List<Customer> customersWithNameHasan = customerRepository.findByFirstName("Hasan");
         System.out.println("Customers with name Hasan:");
@@ -190,27 +168,13 @@ class RepositoryTestBank {
             assertEquals(customer.getFirstName(), "Hasan");
         }
 
-    }
 
-    @Test
-    void Test_Address()
-    {
+
+        // TESTS RELATED TO ADDRESS CLASS
+
         List<Address> addressList = addressRepository.findAll();
         assertNotNull(addressList, "Product table returns null.");
-        assertEquals(0, addressList.size());
 
-        Address address1 = new Address("OzU", "Cekmekoy");
-        Address address2 = new Address("Home","Kadikoy");
-        Address address3 = new Address("Dorm", "Cekmekoy");
-        Address address4 = new Address("Home","Besiktas");
-
-        addressRepository.save(address1);
-        addressRepository.save(address2);
-        addressRepository.save(address3);
-        addressRepository.save(address4);
-
-        addressList = addressRepository.findAll();
-        assertEquals(4, addressList.size());
 
         addressList = addressRepository.findByTextContains("Home");
         System.out.println("List of addresses labeled as \"Home\":");
@@ -219,6 +183,9 @@ class RepositoryTestBank {
             System.out.println(address);
             assertEquals("Home", address.getText());
         }
+
+
+        // find the addresses that have "koy" in their city name
         addressList = addressRepository.findByCityContaining("koy");
         System.out.println("List of addresses in a city that contains \"koy\":");
         for (Address address : addressList)
@@ -226,35 +193,29 @@ class RepositoryTestBank {
             System.out.println(address);
             assertTrue(address.getCity().contains("koy"));
         }
-    }
 
 
-    @Test
-    void Test_Order() throws InterruptedException
-    {
+
+        // TESTS RELATED TO ORDER CLASS
+
+        // Check if orderlist is null. It SHALL NOT be.
         List<Order> orderList = orderRepository.findAll();
         assertNotNull(orderList, "Product table returns null.");
-        assertEquals(0, orderList.size());
 
-        Order order1 = new Order();
-        orderRepository.save(order1);
 
-        orderList = orderRepository.findAll();
-        assertEquals(1, orderList.size());
-
-        Order order2 = new Order();
-        orderRepository.save(order2);
-
-        orderList = orderRepository.findAll();
-        assertEquals(2, orderList.size());
-
+        // wait to let time pass
         Thread.sleep(2000);
 
+        // get the orders that have been ordered already, this line should
+        // get all the orders in the database
         Integer numOrders = orderRepository.findByDateBefore(new Date()).size();
         assertEquals(numOrders, orderList.size());
 
+
+        // wait some more
         Thread.sleep(2000);
 
+        // Print the orders and check the date if it is in the past
         System.out.println("Orders ordered before:");
         for (Order order : orderList)
         {

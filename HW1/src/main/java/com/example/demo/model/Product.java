@@ -24,7 +24,7 @@ public class Product {
     private int id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "SHOP_ID")
+    @JoinColumn(name = "SHOP_ID", nullable = false)
     private Shop shop;
 
     @ManyToMany(mappedBy = "productList", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
