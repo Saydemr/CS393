@@ -134,7 +134,7 @@ class RepositoryTestBank {
         shopList = shopRepository.findAll();
         assertEquals(1, shopList.size());
         Shop shopRetrieved = shopRepository.findByName("7/24").get(0);
-        assertSame(shopRetrieved, shop1);
+        assertEquals(shopRetrieved.toString(), shop1.toString());
 
         System.out.println("List of shops:");
         for (Shop shop : shopList)
