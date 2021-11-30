@@ -1,8 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.Repositories.*;
+import com.example.demo.repository.*;
 import com.example.demo.model.*;
-import org.aspectj.lang.annotation.DeclareWarning;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
