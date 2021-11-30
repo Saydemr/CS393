@@ -10,26 +10,25 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public interface ShopRepository extends JpaRepository<Shop,Integer> {
+public interface ShopRepository extends JpaRepository<Shop, Integer> {
 
     List<Shop> findByName(String name);
+
     List<Shop> findByAddress(String address);
+
     List<Shop> findByNameAndAddress(String name, String address);
+
     List<Shop> findById(int id);
 
     @Query("SELECT s FROM Shop s")
     List<Shop> findAllShops();
 
+    @Transactional
+    @Modifying
     @Query("DELETE FROM Shop s WHERE s.id = ?1")
     boolean deleteShop(int id);
 
     @Query("SELECT s FROM Shop s INNER JOIN s.productList p WHERE p.price > 200")
-    List<Shop> findShopAndProductsGreaterThan200(int id);
+    List<Shop> findShopAndListProductsGreaterThan200(int id);
 
-
-
-//
-//    @Transactional
-//    @Modifying
-//    @Query("INSERT INTO Shop VALUES")
 }
