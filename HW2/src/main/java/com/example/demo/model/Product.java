@@ -1,12 +1,10 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
-/*
-    CHECK DONE \/
-*/
 
 @Entity
 @Table(name = "T_PRODUCT")
@@ -23,14 +21,17 @@ public class Product {
     @Column( name = "PRODUCT_ID")
     private int id;
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "SHOP_ID", nullable = false)
     private Shop shop;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "productList", cascade = CascadeType.ALL)
     private List<Order> orderList = new ArrayList<Order>();
 
-    public Product() {}
+    public Product() {
+    }
 
     public Product(String name, double price) {
         this.name = name;

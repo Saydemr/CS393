@@ -1,8 +1,6 @@
 package com.example.demo.model;
 
-/*
- CHECK DONE \/
-*/
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,6 +15,7 @@ public class Shop {
     @Column(name = "SHOP_ID")
     private int id;
 
+    @JsonIgnore
     @OneToMany( mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Customer> customerList = new ArrayList<Customer>();
 
@@ -28,7 +27,8 @@ public class Shop {
     @Column(name = "SHOP_ADDRESS", length = 200)
     public String address;
 
-    public Shop() {}
+    public Shop() {
+    }
 
     public Shop(String name, String address) {
         this.name = name;

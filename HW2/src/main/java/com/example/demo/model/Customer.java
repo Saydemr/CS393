@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,14 +19,18 @@ public class Customer {
     @Column(name = "LAST_NAME", length = 20)
     public String lastName;
 
+
+    @JsonIgnore
     @ManyToOne( cascade = CascadeType.ALL)
     @JoinColumn(name = "SHOP_ID")
     private Shop shop;
 
+    @JsonIgnore
     @OneToOne( cascade = CascadeType.ALL)
     @JoinColumn( name = "ADDRESS_ID", nullable = false)
     private Address address;
 
+    @JsonIgnore
     @OneToMany( mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Order> orderList = new ArrayList<Order>();
 

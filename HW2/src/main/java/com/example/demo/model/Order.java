@@ -56,6 +56,10 @@ public class Order {
         return amount;
     }
 
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
     public int getId() {
         return id;
     }
@@ -78,10 +82,6 @@ public class Order {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
     }
 
     @Override
