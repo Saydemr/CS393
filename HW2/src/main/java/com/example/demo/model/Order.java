@@ -18,10 +18,10 @@ public class Order {
     (
         name = "T_ORDER_PRODUCT",
         joinColumns = @JoinColumn
-        (name = "T_PRODUCT_ID",referencedColumnName = "PRODUCT_ID"),
+                (name = "T_ORDER_ID",referencedColumnName = "ORDER_ID"),
 
         inverseJoinColumns = @JoinColumn
-        (name = "T_ORDER_ID",referencedColumnName = "ORDER_ID")
+                (name = "T_PRODUCT_ID",referencedColumnName = "PRODUCT_ID")
     )
     private List<Product> productList = new ArrayList<Product>();
 
@@ -32,6 +32,7 @@ public class Order {
     @Temporal(TemporalType.TIMESTAMP )
     @Column(name = "DATE")
     public Date date;
+
     @Column(name = "AMOUNT")
     public double amount;
 

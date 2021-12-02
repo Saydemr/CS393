@@ -22,9 +22,10 @@ public class Product {
     private int id;
 
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "SHOP_ID", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "SHOP_ID")
     private Shop shop;
+
 
     @JsonIgnore
     @ManyToMany(mappedBy = "productList", cascade = CascadeType.ALL)

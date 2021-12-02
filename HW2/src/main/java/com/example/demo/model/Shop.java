@@ -15,11 +15,11 @@ public class Shop {
     @Column(name = "SHOP_ID")
     private int id;
 
-    @JsonIgnore
-    @OneToMany( mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
+    @OneToMany( mappedBy = "shop")
     private List<Customer> customerList = new ArrayList<Customer>();
 
-    @OneToMany( mappedBy = "shop", cascade = CascadeType.ALL)
+    @OneToMany( mappedBy = "shop")
     private List<Product> productList = new ArrayList<Product>();
 
     @Column(name = "SHOP_NAME", length = 100)
