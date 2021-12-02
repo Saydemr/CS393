@@ -28,4 +28,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	@Query("DELETE FROM Product p WHERE p.id = ?1")
 	void deleteProduct(int id);
 
+	@Query("SELECT p FROM Product p WHERE p.shop.id = ?1")
+	List<Product> findProductsByShopId(int id);
+
+
 }

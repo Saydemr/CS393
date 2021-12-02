@@ -29,4 +29,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 	@Query("DELETE FROM Customer c WHERE c.id = ?1")
 	void deleteCustomer(int id);
 
+	@Query(" SELECT c FROM Customer c WHERE c.shop.id = ?1")
+	List<Customer> findCustomersByShopId(int id);
 }

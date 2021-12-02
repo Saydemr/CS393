@@ -36,12 +36,15 @@ public class ShopService {
 		return shopRepository.findAll();
 	}
 
+	public Shop findShopById(int id) {
+		return shopRepository.getById(id);
+	}
 
 	@Transactional
 	public void deleteShopById(int id) {
 		// Need to find id of the products that are on shop
-		List<Product> products = shopRepository.findProductsByShopId(id);
-		List<Customer> customers = shopRepository.findCustomersByShopId(id);
+		List<Product> products = productRepository.findProductsByShopId(id);
+		List<Customer> customers = customerRepository.findCustomersByShopId(id);
 
 		for (Product product : products)
 			productRepository.deleteProduct(product.getId());

@@ -1,5 +1,6 @@
 # CS393 - HW2
-This is the repository for HW2 of CS393 Developing Backend Applications with Spring Framework course given by [Esma Meral](https://github.com/esmameral) at [Ozyegin University](https://www.ozyegin.edu.tr). Code is written by [Abdullah Saydemir](https://github.com/Saydemr) and will be available after the deadline via [this link](https://github.com/Saydemr/CS393/tree/main/HW2).
+This is the repository for HW2 of CS393 Developing Backend Applications with Spring Framework course given by [Esma Meral](https://github.com/esmameral) at [Ozyegin University](https://www.ozyegin.edu.tr).
+Code is written by [Abdullah Saydemir](https://github.com/Saydemr) and will be available after the deadline via [this link](https://github.com/Saydemr/CS393/tree/main/HW2).
 <br>
 ### Pre-requisites
 - [Java SE 11](https://www.oracle.com/tr/java/technologies/javase/jdk11-archive-downloads.html)
@@ -11,7 +12,7 @@ This is the repository for HW2 of CS393 Developing Backend Applications with Spr
 ### Configurations
 - To connect IntelliJ IDEA to Derby DB:
   - Click `Database` tab in the top-right corner of the IDE. ![image](Screenshot_3.png)
-  - Click `+  -> Data Source` and choose `Apache Derby` from the dropdown menu.
+  - Click `+  -> Data Source` and choose `Apache Derby` from the dropdown menu. ![image](Screenshot_7.png)
   - From drivers tab choose `Apache Derby (Remote)` and download the ClientDriver. Then click on `Create Data Source`. ![image](Screenshot_1.png)
   - Adjust the configurations according to below image. ![image](Screenshot_2.png)
   - Click on `Apply` and `OK`.
@@ -38,7 +39,7 @@ This is the repository for HW2 of CS393 Developing Backend Applications with Spr
 4. To `POST` a new shop to the server:
    1. Have a body in the following form <br>
       { <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;"address" : <address-text>, <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;"name" : <name-of-shop> <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;"address" : <address-string>, <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;"name" : <name-of-shop-string> <br>
       } <br>
    2. Use : POST `http://localhost:8080/shops`

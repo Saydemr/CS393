@@ -22,8 +22,11 @@ public class ShopController {
 	}
 
 	@GetMapping("/{id}")
-	public List<Product> findShopAndListProductsGreaterThan200(@PathVariable("id") int id) {
-		return shopService.findShopAndListProductsGreaterThan200(id);
+	public Shop findShopAndListProductsGreaterThan200(@PathVariable("id") int id) {
+		List<Product> productList = shopService.findShopAndListProductsGreaterThan200(id);
+		Shop shop = shopService.findShopById(id);
+		shop.setProductList(productList);
+		return shop;
 	}
 
 	@PostMapping

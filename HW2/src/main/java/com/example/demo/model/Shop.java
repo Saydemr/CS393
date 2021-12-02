@@ -15,7 +15,6 @@ public class Shop {
     @Column(name = "SHOP_ID")
     private int id;
 
-
     @OneToMany( mappedBy = "shop")
     private List<Customer> customerList = new ArrayList<Customer>();
 
