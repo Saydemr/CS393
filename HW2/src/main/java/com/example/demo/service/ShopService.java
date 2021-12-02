@@ -10,16 +10,23 @@ import java.util.List;
 @Service
 public class ShopService {
 
-    @Autowired
-    ShopRepository shopRepository;
+	@Autowired
+	ShopRepository shopRepository;
 
-    // Using default save method
-    public Shop pushShop(Shop shop) { return shopRepository.save(shop); }
+	public Shop pushShop(Shop shop) {
+		return shopRepository.save(shop);
+	}
 
-    public void deleteShopById(int id) { shopRepository.deleteShop(id); }
+	public void deleteShopById(int id) {
+		shopRepository.deleteShop(id);
+	}
 
-    public List<Shop> findShopAndListProductsGreaterThan200(int id) { return shopRepository.findShopAndListProductsGreaterThan200(id); }
+	public List<Shop> findShopAndListProductsGreaterThan200(int id) {
+		return shopRepository.findShopAndListProductsGreaterThan200(id);
+	}
 
-    public List<Shop> findAllShops() { return shopRepository.findAllShops(); }
+	public List<Shop> findAllShops() {
+		return shopRepository.findAll();
+	}
 
 }

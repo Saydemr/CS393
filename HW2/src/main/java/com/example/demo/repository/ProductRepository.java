@@ -9,10 +9,14 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-    List<Product> findById(int id);
-    List<Product> findByName(String name);
-    List<Product> findByPriceLessThan(double price);
-    List<Product> findByPriceGreaterThan(double price);
-    List<Product> findByNameAndPrice(String name, double price);
+	List<Product> findById(int id);
+
+	List<Product> findByName(String name);
+
+	List<Product> findByPriceLessThan(double price);
+
+	List<Product> findByPriceGreaterThan(double price);
+
+	List<Product> findByNameAndPrice(String name, double price);
 
 }

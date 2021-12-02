@@ -8,27 +8,23 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface ShopRepository extends JpaRepository<Shop, Integer> {
 
-    List<Shop> findByName(String name);
+	@Query("SELECT s FROM Shop s")
+	List<Shop> findAll();
 
-    List<Shop> findByAddress(String address);
+	@Query("SELECT s FROM Shop s where s.name = ?1")
+	List<Shop> findShopByName();
 
-    List<Shop> findByNameAndAddress(String name, String address);
+	@Query("SELECT s FROM Shop s INNER JOIN s.productList p WHERE p.price > 200")
+	List<Shop> findShopAndListProductsGreaterThan200(int id);
 
-    List<Shop> findById(int id);
-
-    @Query("SELECT s FROM Shop s")
-    List<Shop> findAllShops();
-
-    @Transactional
-    @Modifying
-    @Query("DELETE FROM Shop s WHERE s.id = ?1")
-    boolean deleteShop(int id);
-
-    @Query("SELECT s FROM Shop s INNER JOIN s.productList p WHERE p.price > 200")
-    List<Shop> findShopAndListProductsGreaterThan200(int id);
+	@Transactional
+	@Modifying
+	@Query("DELETE FROM Shop s WHERE s.id = ?1")
+	void deleteShop(int id);
 
 }

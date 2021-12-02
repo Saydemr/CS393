@@ -1,11 +1,7 @@
 package com.example.demo.controller;
 
 
-import com.example.demo.model.Customer;
-import com.example.demo.model.Product;
 import com.example.demo.model.Shop;
-import com.example.demo.service.CustomerService;
-import com.example.demo.service.ProductService;
 import com.example.demo.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,39 +12,27 @@ import java.util.List;
 @RestController
 public class ShopController {
 
-    @Autowired
-    ShopService shopService;
+	@Autowired
+	ShopService shopService;
 
-    @Autowired
-    ProductService productService;
+	@GetMapping
+	public List<Shop> findAllShops() {
+		return shopService.findAllShops();
+	}
 
-    @Autowired
-    CustomerService customerService;
+	@GetMapping("/{id}")
+	public List<Shop> findShopAndListProductsGreaterThan200(@PathVariable("id") int id) {
+		return shopService.findShopAndListProductsGreaterThan200(id);
+	}
 
-    @GetMapping
-    public List<Shop> findAllShops() { return shopService.findAllShops(); }
+	@PostMapping
+	public @ResponseBody
+	Shop saveShop(@RequestBody Shop shop) {
+		return shopService.pushShop(shop);
+	}
 
-    @GetMapping("/{id}")
-    public List<Shop> findShopAndListProductsGreaterThan200(@PathVariable("id") int id)
-    {
-        return shopService.findShopAndListProductsGreaterThan200(id);
-    }
-
-    @PostMapping
-    public @ResponseBody Shop saveShop(@RequestBody Shop shop)
-    {
-        for(Product p : shop.getProductList())
-            productService.pushProduct(p);
-
-        for(Customer c : shop.getCustomerList())
-            customerService.pushCustomer(c);
-
-        return shopService.pushShop(shop);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteShopById(@PathVariable("id") int id)
-    {
-        shopService.deleteShopById(id);
-    }
+	@DeleteMapping("/{id}")
+	public void deleteShopById(@PathVariable("id") int id) {
+		shopService.deleteShopById(id);
+	}
 }

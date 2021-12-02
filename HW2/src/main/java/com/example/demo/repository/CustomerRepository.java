@@ -9,11 +9,16 @@ import java.util.List;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
-    List<Customer> findByFirstName(String firstName);
-    List<Customer> findByLastName(String lastName);
-    List<Customer> findByFirstNameAndLastName(String firstName, String lastName);
-    List<Customer> findById(int id);
-    List<Customer> findByAddress_Id(int id);
-    List<Customer> findByShop_Id(int id);
+	List<Customer> findByFirstName(String firstName);
+
+	List<Customer> findByLastName(String lastName);
+
+	List<Customer> findByFirstNameAndLastName(String firstName, String lastName);
+
+	List<Customer> findById(int id);
+
+	List<Customer> findByAddress_Id(int id);
+
+	List<Customer> findByShop_Id(int id);
 
 }
