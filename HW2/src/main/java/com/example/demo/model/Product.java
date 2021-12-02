@@ -28,7 +28,7 @@ public class Product {
 
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "productList", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "productList")
     private List<Order> orderList = new ArrayList<Order>();
 
     public Product() {

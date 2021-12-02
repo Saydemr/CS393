@@ -13,7 +13,7 @@ public class Order {
     @Column(name = "ORDER_ID")
     private int id;
 
-    @ManyToMany ( cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable
     (
         name = "T_ORDER_PRODUCT",
@@ -25,7 +25,7 @@ public class Order {
     )
     private List<Product> productList = new ArrayList<Product>();
 
-    @ManyToOne (cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn( name = "CUSTOMER_ID", nullable = false)
     private Customer customer;
 

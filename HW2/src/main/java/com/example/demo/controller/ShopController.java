@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.model.Product;
 import com.example.demo.model.Shop;
 import com.example.demo.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class ShopController {
 	}
 
 	@GetMapping("/{id}")
-	public List<Shop> findShopAndListProductsGreaterThan200(@PathVariable("id") int id) {
+	public List<Product> findShopAndListProductsGreaterThan200(@PathVariable("id") int id) {
 		return shopService.findShopAndListProductsGreaterThan200(id);
 	}
 

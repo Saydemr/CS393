@@ -21,17 +21,17 @@ public class Customer {
 
 
     @JsonIgnore
-    @ManyToOne( cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "SHOP_ID")
     private Shop shop;
 
     @JsonIgnore
-    @OneToOne( cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn( name = "ADDRESS_ID", nullable = false)
     private Address address;
 
     @JsonIgnore
-    @OneToMany( mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToMany( mappedBy = "customer")
     private List<Order> orderList = new ArrayList<Order>();
 
     public Customer() {
