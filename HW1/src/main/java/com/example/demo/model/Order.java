@@ -13,7 +13,7 @@ public class Order {
     @Column(name = "ORDER_ID")
     private int id;
 
-    @ManyToMany ( cascade = CascadeType.ALL)
+    @ManyToMany (cascade = CascadeType.ALL)
     @JoinTable
     (
         name = "T_ORDER_PRODUCT",

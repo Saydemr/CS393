@@ -30,8 +30,7 @@ public class ShopController {
 	}
 
 	@PostMapping
-	public @ResponseBody
-	Shop saveShop(@RequestBody Shop shop) {
+	public Shop saveShop(@RequestBody Shop shop) {
 		return shopService.pushShop(shop);
 	}
 
