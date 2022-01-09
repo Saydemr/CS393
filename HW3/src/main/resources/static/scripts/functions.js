@@ -30,7 +30,7 @@ function print_products(products)
     for (p of products)
     {
         tableStr += "<tr>"
-        tableStr += "<td><img src=\"" + p.icon + "\" width=\"100\" height=\"100\" alt='Something fishy is going on.. Try refresing the page :)'/></td>"
+        tableStr += "<td><img src=\"images/" + p.icon + "\" width=\"100\" height=\"100\" alt='Something fishy is going on.. Try refresing the page :)'/></td>"
         tableStr += "<td>" + p.name + "</td>"
         tableStr += "<td>" + p.price + "</td>"
         //tableStr += "<td>" + p.quantity + "</td>";
@@ -63,13 +63,13 @@ function add_to_cart(product)
     tableStr += "</thead>"
     tableStr += "<tbody>"
 
-    total_price = 0.0
+    let total_price = 0.0
     for (var i = 0; i < cart.length; i++)
     {
         total_price += cart[i].price
 
         tableStr += "<tr>";
-        tableStr += "<td><img src=\"" + cart[i].icon + "\" width=\"100\" height=\"100\" alt='Something fishy is going on.. Try refresing the page :)'/></td>"
+        tableStr += "<td><img src=\"images/" + cart[i].icon + "\" width=\"100\" height=\"100\" alt='Something fishy is going on.. Try refresing the page :)'/></td>"
         tableStr += "<td>" + cart[i].name + "</td>"
         tableStr += "<td>" + cart[i].price + "</td>"
         tableStr += "<td>" + "<button onclick=remove_from_cart("+ i +")>Remove from shopping cart</button></td>"
@@ -79,9 +79,7 @@ function add_to_cart(product)
     tableStr += "</tbody>"
     tableStr += "<button onclick=checkout()>Checkout</button>"
     document.getElementById("cart").innerHTML = tableStr
-    
-    document.getElementById("items").innerHTML = "Item Count : " + cart.length
-    document.getElementById("total").innerHTML = "Total Price : " + total_price
+    document.getElementById("items").innerHTML = "Item Count : " + cart.length + " Total Price : " + total_price
 }
 
 function refresh_table()
@@ -100,12 +98,12 @@ function refresh_table()
     tableStr += "</thead>"
     tableStr += "<tbody>"
 
-    total_price = 0.0
+    let total_price = 0.0
     for (var i = 0; i < cart.length; i++)
     {
         total_price += cart[i].price
         tableStr += "<tr>";
-        tableStr += "<td><img src=\"" + cart[i].icon + "\" width=\"100\" height=\"100\" alt='Something fishy is going on.. Try refresing the page :)'/></td>"
+        tableStr += "<td><img src=\"images/" + cart[i].icon + "\" width=\"100\" height=\"100\" alt='Something fishy is going on.. Try refresing the page :)'/></td>"
         tableStr += "<td>" + cart[i].name + "</td>"
         tableStr += "<td>" + cart[i].price + "</td>"
         tableStr += "<td>" + "<button onclick=remove_from_cart("+ i +")>Remove from shopping cart</button></td>"
@@ -119,9 +117,7 @@ function refresh_table()
     }
     tableStr += "</table>";
     document.getElementById("cart").innerHTML = tableStr
-    
-    document.getElementById("items").innerHTML = "Item Count : " + cart.length
-    document.getElementById("total").innerHTML = "Total Price : " + total_price
+    document.getElementById("items").innerHTML = "Item Count : " + cart.length + " Total Price : " + total_price
 }
 
 
@@ -143,7 +139,7 @@ function checkout()
     {
         total_price += p.price
         var product_json = {
-            "id": p.id,
+            "id": p.id
         }
         dummy_json.products.push(product_json)
     }
@@ -157,4 +153,6 @@ function checkout()
         console.log(response);
     }
     )
+    cart = []
+    window.location.href = "confirmed.html"
 }

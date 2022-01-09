@@ -31,7 +31,7 @@ public class OrderController {
 		// This creates an address and a customer every time ...
 		// Yeah bad coding...
 		Address address = new Address();
-		address.setCity("Istabul");
+		address.setCity("Istanbul");
 		address.setText("Cekmekoy");
 		addressService.save(address);
 
