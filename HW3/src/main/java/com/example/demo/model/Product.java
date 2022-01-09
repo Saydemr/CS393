@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.swing.*;
 
 @Entity
 @Table(name = "T_PRODUCT")
@@ -25,6 +26,9 @@ public class Product {
 	
 	@Column(nullable = false)
 	private double price;
+
+	@Column
+	private String icon;
 	
 	@ManyToMany(mappedBy = "products")
 	private List<Order> orders =new ArrayList<>();
@@ -32,8 +36,15 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name = "SHOP_ID")
 	private Shop shop;
-	
-	
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -24,16 +24,15 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 
 	private double amount;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	//@JoinColumn(name = "CUST_ID")
 	private Customer customer;
 
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.MERGE)
 	@JoinTable(name = "REL_ORDER_PRODUCT", 
 	joinColumns = @JoinColumn(name = "ORDER_ID", referencedColumnName = "ID"), 
 	inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "ID"))

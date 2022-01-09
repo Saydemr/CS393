@@ -15,9 +15,7 @@ import org.springframework.stereotype.Service;
 public class ShopService {
 	@Autowired
 	private ShopRepository shopRepository;
-	
-	@Autowired
-	private ProductRepository productRepository;
+
 	
 	public void delete(int id) {
 		shopRepository.deleteById(id);
@@ -35,10 +33,5 @@ public class ShopService {
 		return shopRepository.save(shop);
 	}
 	
-	public ShopAndProductDTO findByIdAndProductPrice(int id, double price){
-		ShopAndProductDTO	shop=shopRepository.getShopById(id);
-		shop.setProducts(productRepository.findByShopIdAndPrice(id, price));
-		return shop;
-	}
-	
+
 }

@@ -1,18 +1,30 @@
 package com.example.demo.dto;
 
+import javax.swing.*;
+
 public class ProductDTO {
 	private int id;
-	
-	public ProductDTO(int id, String name, double price) {
+
+	private double price;
+	private String icon;
+	private String name;
+
+	public ProductDTO(int id, String name, double price, String icon) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
+		this.icon = icon;
 	}
-	private String name;
-	
-	private double price;
-	
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
 	public int getId() {
 		return id;
 	}

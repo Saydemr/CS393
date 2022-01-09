@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.dto.ShopAndProductDTO;
 import com.example.demo.dto.ShopDTO;
 import com.example.demo.model.Shop;
 import com.example.demo.service.ShopService;
@@ -35,8 +34,5 @@ public class ShopController {
 		 service.delete(id);
 	}
 	
-	@GetMapping("/{id}")
-	public ShopAndProductDTO getShop(@PathVariable int id){
-		 return service.findByIdAndProductPrice(id,200.0);
-	}
+
 }

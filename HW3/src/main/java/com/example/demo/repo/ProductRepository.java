@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-	 @Query("select new com.example.demo.dto.ProductDTO(p.id, p.name, p.price) from Shop s inner join s.products p where s.id=?1 and p.price>?2")
-	 List<ProductDTO> findByShopIdAndPrice(int id, double price);
+	@Query("select new com.example.demo.dto.ProductDTO(p.id, p.name, p.price, p.icon) from Product p")
+	List<ProductDTO> getProducts();
 }
