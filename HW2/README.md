@@ -10,6 +10,7 @@ Code is written by [Abdullah Saydemir](https://github.com/Saydemr) and will be a
   - Run the server by double-clicking on `startNetworkServer.bat` file inside `bin` directory. You can use `.jar` file with the similar name if you downloaded the `.tar.gz` version.
 - [Postman](https://www.postman.com/downloads/)
 <br>
+
 ### Configurations
 - To connect IntelliJ IDEA to Derby DB:
   - Click `Database` tab in the top-right corner of the IDE. <br><br> ![image](Screenshot_3.png) <br><br>
@@ -19,6 +20,7 @@ Code is written by [Abdullah Saydemir](https://github.com/Saydemr) and will be a
   - Click on `Apply` and `OK`.
   - You can now use the query console and tables directly from IntelliJ IDEA.
 <br>
+
 ### Adding Records to DB
 - Use the `Database` tab in the top right corner of the IDE.
 - Click on refresh to update the tables. Choose the table you would like to insert records into and double click onto it. Then, click on `+` icon on the top middle bar. <br><br>![image](Screenshot_4.png)<br><br>
